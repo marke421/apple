@@ -27,7 +27,7 @@ async function ListaProductosNuevos(props) {
             className="max-w-80 bg-white p-4 rounded-lg m-auto md:max-h-[500px]"
           >
             <Image
-              className="rounded max-h-[300px] overflow-auto"
+              className="rounded max-h-[300px]"
               src={rs.imagenes[0]}
               alt="celular"
               height={1000}
