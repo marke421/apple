@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const getProductos = async () => {
   try {
-    const res = await fetch("http://localhost:3000/api/producto", {
+    const res = await fetch("http://tiendaappledemo.vercel.app/api/producto", {
       cache: "no-store",
     });
     if (!res.ok) {

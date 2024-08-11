@@ -37,7 +37,7 @@ const NuevoProducto = () => {
       formData.append("file", imagenes[i]);
     }
     // Subir la imagen al servidor
-    const res = await fetch("http://localhost:3000/api/upload", {
+    const res = await fetch("http://tiendaappledemo.vercel.app/api/producto", {
       method: "POST",
       body: formData,
     });
@@ -46,7 +46,7 @@ const NuevoProducto = () => {
     setImagenes(data.urls);
 
     try {
-      const response = await fetch("http://localhost:3000/api/producto", {
+      const response = await fetch("/api/producto", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
