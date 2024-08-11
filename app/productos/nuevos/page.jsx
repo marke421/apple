@@ -1,4 +1,4 @@
-import ListaProductosNuevos from "@/components/listaProductosNuevos";
+import ListaProductosNuevos from "@/components/ListaProductosNuevos";
 import React from "react";
 
 const PaginaNuevos = () => {
