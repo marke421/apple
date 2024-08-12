@@ -1,26 +1,44 @@
+"use client";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { FaWhatsapp } from "react-icons/fa6";
 import { FaTruck } from "react-icons/fa";
 
-const getProductById = async (id) => {
-  try {
-    const res = await fetch(`/api/producto/${id}`, {
-      cache: "no-store",
-    });
-
-    if (!res.ok) {
-      throw new Error("Failed to fetch product.");
-    }
-
-    return res.json();
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-export default async function PaginaProducto({ params }) {
+export default function PaginaProducto({ params }) {
   const { id } = params;
-  const { producto } = await getProductById(id);
+  const [producto, setProducto] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const getProductById = async (id) => {
+      try {
+        const res = await fetch(`/api/producto/${id}`, {
+          cache: "no-store",
+        });
+
+        if (!res.ok) {
+          throw new Error("Failed to fetch product.");
+        }
+
+        const data = await res.json();
+        setProducto(data.producto);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    getProductById(id);
+  }, [id]);
+
+  if (loading) {
+    return <p className="text-5xl text-center m-auto">Cargando...</p>; // Puedes reemplazar esto con un spinner o un mensaje personalizado
+  }
+
+  if (!producto) {
+    return <p>No se pudo cargar el producto.</p>; // Maneja el caso cuando no hay producto
+  }
+
   const {
     titulo,
     precio,

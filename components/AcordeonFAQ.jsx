@@ -5,7 +5,7 @@ const AcordeonFAQ = () => {
     <>
       <div className="collapse collapse-plus bg-base-200">
         <input type="radio" name="my-accordion-3" defaultChecked />
-        <div className="collapse-title text-xl font-medium">
+        <div className="collapse-title text-md font-semibold md:text-xl">
           ¿Cuáles son los medios de pago disponibles?
         </div>
         <div className="collapse-content">
@@ -17,7 +17,7 @@ const AcordeonFAQ = () => {
       </div>
       <div className="collapse collapse-plus bg-base-200">
         <input type="radio" name="my-accordion-3" />
-        <div className="collapse-title text-xl font-medium">
+        <div className="collapse-title text-md font-semibold md:text-xl">
           ¿Cuánto tarda la entrega de los productos?
         </div>
         <div className="collapse-content">
@@ -29,7 +29,7 @@ const AcordeonFAQ = () => {
       </div>
       <div className="collapse collapse-plus bg-base-200">
         <input type="radio" name="my-accordion-3" />
-        <div className="collapse-title text-xl font-medium">
+        <div className="collapse-title text-md font-semibold md:text-xl">
           ¿Cómo puedo rastrear mi pedido?
         </div>
         <div className="collapse-content">
@@ -42,7 +42,7 @@ const AcordeonFAQ = () => {
       </div>
       <div className="collapse collapse-plus bg-base-200">
         <input type="radio" name="my-accordion-3" />
-        <div className="collapse-title text-xl font-medium">
+        <div className="collapse-title text-md font-semibold md:text-xl">
           ¿Que pasa si mi pedido llega dañado?
         </div>
         <div className="collapse-content">

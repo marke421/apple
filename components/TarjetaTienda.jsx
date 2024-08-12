@@ -6,7 +6,7 @@ const TarjetaTienda = ({ imagen, titulo, link }) => {
   return (
     <Link
       href={link}
-      className="card bg-base-100 image-full w-96 shadow-xl h-60"
+      className="card bg-base-100 image-full sm:w-96 w-[90%] shadow-xl h-60"
     >
       <figure>
         <Image className="w-full" src={imagen} alt="Celular usado" />
