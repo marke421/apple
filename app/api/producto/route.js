@@ -3,7 +3,6 @@ import connectMongo from "@/libs/mongosb";
 import { NextResponse } from "next/server";
 
 export async function POST(request) {
-  console.log("Initializing post request");
   const {
     titulo,
     precio,

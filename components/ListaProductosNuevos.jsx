@@ -1,21 +1,29 @@
+"use client";
 import Link from "next/link";
 import Image from "next/image";
-const getProductos = async () => {
-  try {
-    const res = await fetch("http://tiendaappledemo.vercel.app/api/producto", {
-      cache: "no-store",
-    });
-    if (!res.ok) {
-      throw new Error("Ha fallado el fetch de los productos");
-    }
-    return res.json();
-  } catch (error) {
-    console.log("Error cargando productos", error);
-  }
-};
+import { useEffect, useState } from "react";
 
-async function ListaProductosNuevos(props) {
-  const { productos } = await getProductos();
+function ListaProductosNuevos(props) {
+  const [productos, setProductos] = useState([]);
+
+  useEffect(() => {
+    const getProductos = async () => {
+      try {
+        const res = await fetch("/api/producto", {
+          cache: "no-store",
+        });
+        if (!res.ok) {
+          throw new Error("Ha fallado el fetch de los productos");
+        }
+        const data = await res.json();
+        setProductos(data.productos);
+      } catch (error) {
+        console.log("Error cargando productos", error);
+      }
+    };
+    getProductos();
+  }, []);
+
   return (
     <>
       {productos.map((rs) =>

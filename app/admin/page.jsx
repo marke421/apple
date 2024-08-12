@@ -1,24 +1,31 @@
+"use client";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 import { FaRegEdit } from "react-icons/fa";
 import { MdDeleteOutline } from "react-icons/md";
 import Link from "next/link";
 
-const getProductos = async () => {
-  try {
-    const res = await fetch("http://tiendaappledemo.vercel.app/api/producto", {
-      cache: "no-store",
-    });
-    if (!res.ok) {
-      throw new Error("Ha fallado el fetch de los productos");
-    }
-    return res.json();
-  } catch (error) {
-    console.log("Error cargando productos", error);
-  }
-};
+const Admin = () => {
+  const [productos, setProductos] = useState([]);
 
-const Admin = async () => {
-  const { productos } = await getProductos();
+  useEffect(() => {
+    const getProductos = async () => {
+      try {
+        const res = await fetch("/api/producto", {
+          cache: "no-store",
+        });
+        if (!res.ok) {
+          throw new Error("Ha fallado el fetch de los productos");
+        }
+        const data = await res.json();
+        console.log(data);
+        setProductos(data.productos);
+      } catch (error) {
+        console.log("Error cargando productos", error);
+      }
+    };
+    getProductos();
+  }, []);
   return (
     <div className="min-h-[91vh] flex flex-col">
       <h1 className="text-3xl my-6 font-bold text-center">

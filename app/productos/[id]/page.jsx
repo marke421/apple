@@ -4,7 +4,7 @@ import { FaTruck } from "react-icons/fa";
 
 const getProductById = async (id) => {
   try {
-    const res = await fetch(`http://tiendaappledemo.vercel.app/api/producto`, {
+    const res = await fetch(`/api/producto/${id}`, {
       cache: "no-store",
     });
 
